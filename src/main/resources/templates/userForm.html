@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<footer>
+    <a th:href="@{/logout}">Logout</a>
+    <br><br>
+</footer>
+
+<form method="post" action="/admin">
+    <input type="hidden" name="id" th:field="*{user.id}">
+    <dl>
+        <dt>Name:</dt>
+        <dd><input type="text" th:field="*{user.name}" size=40 name="name" required></dd>
+    </dl>
+    <dl>
+        <dt>Last Name:</dt>
+        <dd><input type="text" th:field="*{user.lastName}" size=40 name="lastName" required></dd>
+    </dl>
+    <dl>
+        <dt>Email:</dt>
+        <dd><input type="email" th:field="*{user.email}" size=40 name="email" required></dd>
+    </dl>
+    <dl>
+        <dt>Password:</dt>
+        <dd><input type="text" th:field="*{user.password}" size=40 name="password" required></dd>
+    </dl>
+    <dl>
+        <dt>Role:</dt>
+        <dd><input type="text" th:field="*{user.roles}" size=40 name="role" required></dd>
+    </dl>
+
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
