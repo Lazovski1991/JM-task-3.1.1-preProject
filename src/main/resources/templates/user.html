@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="webjars/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webjars/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
 </head>
 <body>
-<footer>
-    <a th:href="@{/logout}">Logout</a>
-    <br><br>
-</footer>
+<header th:insert="~{bodyHeader :: bodyHeader}"></header>
 
 <table border="1">
     <tr>

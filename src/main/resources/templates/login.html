@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link href="../static/css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet"/>
+    <link href="webjars/bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet" >
 </head>
-<body>
-<div>
+<body class="text-center">
+<main class="form-signin">
     <form method="post" action="/login">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <label for="inputEmail" class="visually-hidden"></label>
+        <input type="text" name="j_username" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputPassword" class="visually-hidden"></label>
+        <input type="password" name="j_password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+</main>
+
+<!--    <form method="post" action="/login">
         <input name="j_username"/>
         <input name="j_password"/>
         <input type="submit"/>
-    </form>
-</div>
+    </form>-->
 </body>
 </html>

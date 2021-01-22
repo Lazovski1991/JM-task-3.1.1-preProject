@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return userDao.getByName(s);
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        return userDao.getByName(name);
     }
 }

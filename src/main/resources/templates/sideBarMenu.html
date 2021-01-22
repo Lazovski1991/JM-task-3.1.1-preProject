@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+</head>
+<body>
+<nav th:fragment="sideBarMenu" id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link active" aria-current="page" href="/admin">
+                    Admin
+                </a>
+            </li>
+            <li class="nav-item">
+                <a sec:authorize="hasRole('ROLE_USER')" class="nav-link" href="/user">
+                    User
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>

@@ -4,37 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="webjars/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="webjars/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
+
 </head>
 <body>
-<footer>
-    <a th:href="@{/logout}">Logout</a>
-    <br><br>
-</footer>
+<header th:insert="~{bodyHeader :: bodyHeader}"></header>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="row" th:insert="~{sideBarMenu :: sideBarMenu}"></nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h1>Admin panel</h1>
 
-<br>
-<a href="/admin/add">Add User</a>
-<br><br>
-<table border="1">
-    <tr>
-        <th>No</th>
-        <th>name</th>
-        <th>last name</th>
-        <th>email</th>
-        <th>password</th>
-        <th>role</th>
-    </tr>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="/admin">User table</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="/admin/add">New user</a>
+                </li>
+            </ul>
 
-    <tr th:each="user, state :${users}">
-        <td th:utext="${state.count}">No</td>
-        <td th:utext="${user.name}">name</td>
-        <td th:utext="${user.lastName}">last name</td>
-        <td th:utext="${user.email}">email</td>
-        <td th:utext="${user.password}">email</td>
-        <td th:utext="${user.roles}">email</td>
-        <td><a th:href="@{/admin/update(id=${user.id})}">Update</a></td>
-        <td><a th:href="@{/admin/delete(id=${user.id})}">Delete</a></td>
-    </tr>
+            <h3>All users</h3>
+                <table class="table table-hover text-center">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                    <tr th:each="user :${users}">
+                        <td th:utext="${user.id}">Id</td>
+                        <td th:utext="${user.name}">name</td>
+                        <td th:utext="${user.lastName}">last name</td>
+                        <td th:utext="${user.email}">email</td>
+                        <td th:utext="${user.password}">password</td>
+                        <td><span th:each="role : ${user.roles}"
+                                  th:text="${role.role.replaceFirst('ROLE_', ' ')}">
+                        </span>
+                        </td>
+                        <td><a class="btn btn-primary" th:href="@{/admin/update(id=${user.id})}">Edit</a></td>
+                        <td><a class="btn btn-danger" th:href="@{/admin/delete(id=${user.id})}">Delete</a></td>
+                    </tr>
+                </table>
+        </main>
+    </div>
+</div>
 
-</table>
 </body>
+</html>
 </html>

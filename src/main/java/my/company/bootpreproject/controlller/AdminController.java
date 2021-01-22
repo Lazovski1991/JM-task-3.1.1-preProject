@@ -31,7 +31,7 @@ public class AdminController {
     @GetMapping(value = "/add")
     public String getPageSave(Model model, User user) {
         model.addAttribute(user);
-        return "userForm";
+        return "formAdd";
     }
 
     @PostMapping
@@ -47,7 +47,7 @@ public class AdminController {
     @GetMapping(value = "/update")
     public String getPageUpdate(Model model, @RequestParam Long id) {
         model.addAttribute(userService.get(id));
-        return "userForm";
+        return "formUpdate";
     }
 
     @GetMapping(value = "/delete")
