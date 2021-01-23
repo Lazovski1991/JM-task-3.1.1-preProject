@@ -1,19 +1,15 @@
 package my.company.bootpreproject.dao;
 
 
-
 import my.company.bootpreproject.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
+public interface UserDao extends JpaRepository<User, Long> {
 
-public interface UserDao {
-    List<User> getUsers();
+    @Modifying
+    @Query("SELECT u FROM User u WHERE u.name=:name")
+    User loadUserByUsername(String name);
 
-    void save(User user);
-
-    void delete(Long id);
-
-    User get(Long id);
-
-    User getByName(String name);
 }

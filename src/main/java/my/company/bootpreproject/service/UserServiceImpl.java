@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     @Override
     public List<User> getUsers() {
-        return userDao.getUsers();
+        return userDao.findAll();
     }
 
     @Transactional
@@ -33,17 +33,31 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void delete(Long id) {
-        userDao.delete(id);
+        userDao.deleteById(id);
     }
 
     @Override
     public User get(Long id) {
-        return userDao.get(id);
+        return userDao.findById(id).get();
     }
 
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        return userDao.getByName(name);
+        return userDao.loadUserByUsername(name);
+    }
+
+    @Transactional
+    public void update(User user, Long id) {
+        User userBd = userDao.findById(id).get();
+        if (id != null && user.getPassword() != null) {
+            userBd.setName(user.getName());
+            userBd.setLastName(user.getLastName());
+            userBd.setEmail(user.getEmail());
+            userBd.setPassword(user.getPassword());
+            userBd.setRoles(user.getRoles());
+            userBd.setAge(user.getAge());
+            userDao.save(userBd);
+        }
     }
 }
