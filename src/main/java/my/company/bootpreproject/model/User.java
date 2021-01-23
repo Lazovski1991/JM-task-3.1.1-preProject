@@ -14,18 +14,20 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(Long id, String name, String lastName, String email, String password, Set<Role> roles) {
+    public User(Long id, String name, String lastName, int age, String email, String password, Set<Role> roles) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
+        this.age = age;
         this.email = email;
         this.password = password;
         this.roles = roles;
     }
 
-    public User(String name, String lastName, String email, String password, Set<Role> roles) {
+    public User(String name, String lastName,int age, String email, String password, Set<Role> roles) {
         this.name = name;
         this.lastName = lastName;
+        this.age = age;
         this.email = email;
         this.password = password;
         this.roles = roles;
@@ -42,10 +44,13 @@ public class User implements UserDetails {
     private String email;
     @Column(name = "password")
     private String password;
+    @Column(name = "age")
+    private int age;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
+
 
     public Long getId() {
         return id;
@@ -93,6 +98,14 @@ public class User implements UserDetails {
 
     public boolean isNew() {
         return getId() == null;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     @Override

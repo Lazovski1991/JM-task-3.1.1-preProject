@@ -8,14 +8,35 @@
 <body>
 <nav th:fragment="sideBarMenu" id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
     <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
+        <ul class="nav nav-pills ">
             <li class="nav-item">
                 <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link active" aria-current="page" href="/admin">
                     Admin
                 </a>
             </li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked active">
             <li class="nav-item">
-                <a sec:authorize="hasRole('ROLE_USER')" class="nav-link" href="/user">
+                <a type="button" sec:authorize="hasRole('ROLE_USER')" class="nav-link" href="/user">
+                    User
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<nav th:fragment="sideBarMenu2" id="sidebarMenu2" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <div class="position-sticky pt-3">
+        <ul class="nav nav-pills ">
+            <li class="nav-item">
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link " aria-current="page" href="/admin">
+                    Admin
+                </a>
+            </li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked active">
+            <li class="nav-item">
+                <a type="button" sec:authorize="hasRole('ROLE_USER')" class="nav-link active" href="/user">
                     User
                 </a>
             </li>
