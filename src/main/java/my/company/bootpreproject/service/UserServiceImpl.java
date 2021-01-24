@@ -44,13 +44,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-        return userDao.loadUserByUsername(name);
+        return userDao.findByName(name);
     }
 
     @Transactional
-    public void update(User user, Long id) {
-        User userBd = userDao.findById(id).get();
-        if (id != null && user.getPassword() != null) {
+    public void update(User user) {
+        User userBd = userDao.findById(user.getId()).get();
+        if (user.getPassword() != null) {
             userBd.setName(user.getName());
             userBd.setLastName(user.getLastName());
             userBd.setEmail(user.getEmail());

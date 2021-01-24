@@ -14,13 +14,11 @@ import java.util.List;
 public class AdminRestController {
 
     private final UserService userService;
-    private final RoleService roleService;
 
     static final String REST_URL = "/rest/admin";
 
-    public AdminRestController(UserService userService, RoleService roleService) {
+    public AdminRestController(UserService userService) {
         this.userService = userService;
-        this.roleService = roleService;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,9 +40,9 @@ public class AdminRestController {
     }
 
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    @PutMapping("/{id}")
-    public void update(@RequestBody User user, @PathVariable Long id) {
-        userService.update(user, id);
+    @PutMapping
+    public void update(@RequestBody User user) {
+        userService.update(user);
     }
 
     @ResponseStatus(value = HttpStatus.OK)

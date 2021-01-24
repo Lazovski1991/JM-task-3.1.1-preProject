@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
+    <script type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js" defer></script>
+    <script type="text/javascript" src="webjars/bootstrap/4.5.3/js/bootstrap.min.js" defer></script>
+</head>
+<body>
+<script type="text/javascript" src="js/modelFrame.js" defer></script>
+<header th:insert="~{bodyHeader :: bodyHeader}"></header>
+
+<div class="row">
+    <nav class="row" th:insert="~{sideBarMenu :: sideBarMenu}"></nav>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <h1>Admin panel</h1>
+
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a href="/admin" class="nav-link active" data-toggle="tab">User table</a>
+            </li>
+            <li class="nav-item">
+                <a href="/admin/add" class="nav-link">New user</a>
+            </li>
+        </ul>
+
+        <h3>All users</h3>
+        <table class="table table-hover text-center">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Role</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody class="user_data">
+            </tbody>
+        </table>
+    </main>
+</div>
+
+<!--Модалка на edit-->
+<div class="modal fade edit_user_data" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit user</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="id" class="col-form-label">ID</label>
+                        <input id="id" path="id" type="text" class="form-control" readonly name="id">
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Username</label>
+                        <input id="name" path="name" type="text" class="form-control" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="col-form-label">LastName</label>
+                        <input id="lastName" path="lastName" type="text" class="form-control" name="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="col-form-label">Age</label>
+                        <input id="age" path="age" type="text" class="form-control" name="age">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-form-label">Password</label>
+                        <input id="password" type="text" class="form-control" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-form-label">Mail</label>
+                        <input id="email" path="email" type="email" class="form-control" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="roles" class="col-form-label">Roles</label>
+                        <select path="roles" name="roles" multiple class="form-control" id="roles" required>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" onclick="save()">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
