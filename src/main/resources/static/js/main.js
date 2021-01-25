@@ -121,20 +121,19 @@ async function editUser(modal, id) {
         let lastName = userForm.find('#lastName').val().trim();
         let age = userForm.find('#age').val().trim();
         let email = userForm.find('#email').val().trim();
-        let roleId = userForm.find('#role option:selected').val().trim();
-        console.log(roleId)
+        let password = userForm.find('#password').val().trim();
+        let roleIdArray = userForm.find('#role').val();
+        let roleJson = roleIdArray.map(function (id) {
+            return {id: id}
+        });
         let data = {
             id: id,
             name: firstName,
             lastName: lastName,
             age: age,
             email: email,
-            password: "1111",
-            roles: [
-                {
-                    id: roleId
-                }
-            ]
+            password: password,
+            roles: roleJson
         };
 
         const userResponse = await userService.update(id, data);
