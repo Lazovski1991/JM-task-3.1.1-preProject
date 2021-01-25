@@ -11,10 +11,10 @@
     <script type="text/javascript" src="webjars/bootstrap/4.5.3/js/bootstrap.min.js" defer></script>
 </head>
 <body>
-<header th:insert="~{bodyHeader :: bodyHeader}"></header>
+<header th:insert="~{fragments/header :: header}"></header>
 
 <div class="row">
-    <nav class="row" th:insert="~{sideBarMenu :: sideBarMenu2}"></nav>
+    <nav class="row" th:insert="~{fragments/sideBarMenu :: sideBarMenu2}"></nav>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
         <h1>User information-page</h1>
@@ -43,9 +43,7 @@
             </tr>
         </table>
     </main>
-
 </div>
-
 </body>
 </html>
 </html>

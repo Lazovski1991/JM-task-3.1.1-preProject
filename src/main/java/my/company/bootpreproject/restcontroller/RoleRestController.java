@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping(value = RoleRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class RoleRestController {
 
-    static final String REST_URL = "/rest/role";
+    static final String REST_URL = "/rest/roles";
 
     private final RoleService roleService;
 

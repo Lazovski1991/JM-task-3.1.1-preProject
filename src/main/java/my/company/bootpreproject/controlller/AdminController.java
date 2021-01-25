@@ -1,10 +1,13 @@
 package my.company.bootpreproject.controlller;
 
+import my.company.bootpreproject.model.User;
 import my.company.bootpreproject.service.RoleService;
 import my.company.bootpreproject.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -32,13 +35,13 @@ public class AdminController {
         return "form";
     }
 
-   /* @PostMapping
+    @PostMapping
     public String saveUsers(@ModelAttribute User user) {
         if (!user.getPassword().isBlank()) {
             userService.save(user);
         }
         return "redirect:/admin";
-    }*/
+    }
 
 /*    @GetMapping(value = "/delete")
     public String delete(@RequestParam Long id) {

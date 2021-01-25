@@ -48,8 +48,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void update(User user) {
-        User userBd = userDao.findById(user.getId()).get();
+    public void update(User user, Long id) {
+        User userBd = userDao.findById(id).get();
         if (user.getPassword() != null) {
             userBd.setName(user.getName());
             userBd.setLastName(user.getLastName());

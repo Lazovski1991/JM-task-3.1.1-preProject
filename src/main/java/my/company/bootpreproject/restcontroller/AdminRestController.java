@@ -40,9 +40,9 @@ public class AdminRestController {
     }
 
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    @PutMapping
-    public void update(@RequestBody User user) {
-        userService.update(user);
+    @PutMapping("/{id}")
+    public void update(@PathVariable Long id, @RequestBody User user) {
+        userService.update(user, id);
     }
 
     @ResponseStatus(value = HttpStatus.OK)
